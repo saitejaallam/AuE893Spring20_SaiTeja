@@ -1,53 +1,75 @@
 #!/usr/bin/env python
 import rospy
 from geometry_msgs.msg  import Twist
-from turtlesim.msg import Pose
-from math import pow,atan2,sqrt
+from turtlesim.msg      import Pose
+from math               import pow,atan2,sqrt
 
 class TurtleBot():
 
     def __init__(self):
-        #Creating our node,publisher and subscriber
-        rospy.init_node('square_closedloop', anonymous=True)
+    #Initialising the node go2goal_turtle 
+        rospy.init_node('go2goal_turtle', anonymous=True)
         self.velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
-        self.pose_subscriber = rospy.Subscriber('/turtle1/pose', Pose, self.update_pose)
+        self.pose_subscriber    = rospy.Subscriber('/turtle1/pose', Pose, self.update_pose)
         self.pose = Pose()
         self.rate = rospy.Rate(10)
 
-    #Callback function implementing the pose value received
     def update_pose(self, data):
+    #Callback function which is called when a new message of type Pose is received by the subscriber
         self.pose = data
-        self.pose.x = round(self.pose.x, 4)
-        self.pose.y = round(self.pose.y, 4)
+        self.pose.x = round(self.pose.x, 8)
+        self.pose.y = round(self.pose.y, 8)
 
-    def euclidian_distance(self, goal_x, goal_y):
-	"""Euclidean distance between current pose and the goal"""
-        turtlesim_distance = sqrt(pow((goal_pose.x - self.pose.x), 2) + pow((goal_pose.y - self.pose.y), 2))
-        return turtlesim_distance
+    def euclidian_distance(self, goal_pose):
+    #distance between goal and current pose
+        distance = sqrt(pow((goal_pose.x - self.pose.x), 2) + pow((goal_pose.y - self.pose.y), 2))
+        return distance
+
+    #def linear_vel(self,goal_pose, constant =1):
+	#return constant * self.euclidian_distance(goal_pose)
+
+    #def steering_angle(self,goal_pose):
+	#angle =atan2(goal_pose.y-self.pose.y,goal_pose.x-self.pose.x)
+	#return angle
+
+    #def angular_vel(self,goal_pose, constant=6):
+	#return constant*(self.steering_angle(goal_pose) -self.pose.theta)
 
     def move2goal(self):
-	"""Moves the turtle towards the goal"""
-	goal_coordinates = [[0,0], [0,0], [0,0], [0,0], [0,0]]
+    #function to move the turtle towards the goal#
+	coordinate = [[0,0], [0,0], [0,0], [0,0], [0,0]]
         goal_pose = Pose()
 
-	for i in range (0,5):
-	#Get the input from the user
-	    x_pos = input("Set your x goal: ")
-	    y_pos = input("Set your y goal: ")
-	    goal_coordinates[x][0] = x_pos
-	    goal_coordinates[x][1] = y_pos
+	for i in range(0,5):
+        #user input
+	    pose_x = input("Set your X coordinate: ")
+	    pose_y = input("Set your Y coordinate: ")
+	    coordinate[i][0] = pose_x
+	    coordinate[i][1] = pose_y
 	
-        distance_tolerance = 0.5
+        distance_tolerance = input("Set your tolerance slightly above 0:")
         vel_msg = Twist()
 
-
-	for j in range (0,5):
+	for j in range(0,5):
       	
-	    while  sqrt(pow((goal_coordinates[i][0] - self.pose.x), 2) + pow((goal_coordinates[i][1] - self.pose.y), 2)) >= distance_tolerance:
+            while abs((atan2(coordinate[j][1] - self.pose.y, coordinate[j][0] - self.pose.x) - self.pose.theta)) >= 0.005:
+            
+            #Porportional Controller
+	    #angular velocity in the z-axis:
+                vel_msg.angular.x = 0
+                vel_msg.angular.y = 0
+                vel_msg.angular.z = 1.5 * (atan2(coordinate[j][1] - self.pose.y, coordinate[j][0] - self.pose.x) - self.pose.theta)
 
-            #Porportional Controller: choosing proportional gain 1.5
+            #Publishing the vel_msg
+                self.velocity_publisher.publish(vel_msg)
+                self.rate.sleep()
+	    
+
+	    while  sqrt(pow((coordinate[j][0] - self.pose.x), 2) + pow((coordinate[j][1] - self.pose.y), 2)) >= distance_tolerance:
+
+            #Porportional Controller
             #linear velocity in the x-axis:
-                vel_msg.linear.x = 1.5 * sqrt(pow((coordinates[i][0] - self.pose.x), 2) + pow((coordinates[i][1] - self.pose.y), 2))
+                vel_msg.linear.x = 1.5 * sqrt(pow((coordinate[j][0] - self.pose.x), 2) + pow((coordinate[j][1] - self.pose.y), 2))
                 vel_msg.linear.y = 0
                 vel_msg.linear.z = 0
 	        vel_msg.angular.z = 0
@@ -56,7 +78,7 @@ class TurtleBot():
                 self.rate.sleep()
 
           
-        #Stopping our robot after the movement is over
+            #Stopping our robot after the movement is over
             vel_msg.linear.x = 0
             vel_msg.angular.z =0
             self.velocity_publisher.publish(vel_msg)

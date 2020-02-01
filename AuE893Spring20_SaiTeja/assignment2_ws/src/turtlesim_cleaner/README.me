@@ -9,4 +9,4 @@ CODE 2: square_openloop.py
 This python file contains the code that can run the turtlesim in a square of size 2*2 with a linear velocity of 0.2 and angular velocity of 0.2 rad/s. The reference taken for this code are from the "Move in a Straight line" ROSWIKI tutorials.
 
 CODE 3: square_closedloop.py
-This python script contains the code that can move the turtlesim within the user speciied goal coordinates. I have used the Go to Goal tutorial from ROSWIKI and tried to tweak it a little to get the turtlesim moving within the coordinates
+This python script contains the code that can move the turtlesim in a square by defining the user specified goal coordinates. I have used the Go to Goal tutorial from ROSWIKI and added a loop that asks for the goal coordinates within which we want to move our turtlesim. I have implemented a proportional controller in another loop with a gain constant of 1.5 for angular velocity and 0.5 for linear velocity. 
