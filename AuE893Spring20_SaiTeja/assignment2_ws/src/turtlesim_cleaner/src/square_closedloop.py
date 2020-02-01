@@ -69,7 +69,7 @@ class TurtleBot():
 
             #Porportional Controller
             #linear velocity in the x-axis:
-                vel_msg.linear.x = 1.5 * sqrt(pow((coordinate[j][0] - self.pose.x), 2) + pow((coordinate[j][1] - self.pose.y), 2))
+                vel_msg.linear.x = 0.5 * sqrt(pow((coordinate[j][0] - self.pose.x), 2) + pow((coordinate[j][1] - self.pose.y), 2))
                 vel_msg.linear.y = 0
                 vel_msg.linear.z = 0
 	        vel_msg.angular.z = 0
