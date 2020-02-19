@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/install
+
+Name: turtlebot3_description
+Description: Description of turtlebot3_description
+Version: 1.2.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: urdf xacro

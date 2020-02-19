@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/install
+
+Name: assignment3
+Description: Description of assignment3
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
