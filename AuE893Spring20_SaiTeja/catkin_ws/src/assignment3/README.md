@@ -32,9 +32,9 @@ The command to run the code in part 2 is
 roslaunch assignment3 turtlebot3_wall.launch
 
 The work has been shared between all the 5 people in the team equally where individuals worked on different tasks and contributed to complete the tasks
-1) Alec and saiteja worked on part 1.
-2) Ajith worked on part 2 for emergency maneuvering.
-2) Utkarsha and Ishan helped in resolving the errors obtained in task1 and task2.
+1) Alec worked on part 1 codes, Utkarsha and Alec together worked on creating the launch file for part 1.
+2) Ajith and saiteja worked on part 2 and also creating the launch and world file for part 2.
+2) Ishan helped in resolving the errors obtained in task1 and task2.
 
 
 
