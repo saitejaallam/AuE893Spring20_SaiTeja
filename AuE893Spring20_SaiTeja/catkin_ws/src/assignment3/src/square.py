@@ -3,7 +3,10 @@ import rospy
 from geometry_msgs.msg import Twist
 PI = 3.1415926535897
 
-# Assignment  - Turlebot
+# Alec Tokosch
+# Assignment  - TurleSim
+# This file contains the python script for the second task which is make the 
+# square_openloop.py file. 
 
 speedX = .2
 speedAng = .2
@@ -13,32 +16,27 @@ def square():
 
     #Starts a new node
     rospy.init_node('turtlebot3_gazebo', anonymous=True)
-    velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    velocity_publisher = rospy.Publisher('cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()
 
     # Tell the user what is going to happen
     print("Let's make a 2x2 square")
-    
-    relative_angle = 0.5*PI
-    vel_msg.linear.y = 0
-    vel_msg.linear.z = 0
-    vel_msg.angular.x = 0
-    vel_msg.angular.y = 0
 
     # For loop to get all four sides and corners
     for x in range(4):
-        #Setting the current time for distance calculus
-        t0 = float(rospy.Time.now().to_sec())
-        current_distance = 0
+
         # Lets go straight and complete the side of the square
         # Tell the user the turtlebot is going to go straight
         print("Lets go straight")
-        
+        # Set the linear veloicty to the speedX which is .2
+        vel_msg.linear.x = abs(speedX)
+
+        #Setting the current time for distance calculus
+        t0 = float(rospy.Time.now().to_sec())
+        current_distance = 0
+
         # Loop to move the turtlebot the specified distance 
         while(current_distance < distance):
-            # Set the linear veloicty to the speedX which is .2
-            vel_msg.linear.x = abs(speedX)
-            vel_msg.linear.z = 0
             #Publish the velocity
             velocity_publisher.publish(vel_msg)
             #Takes actual time to velocity calculus
@@ -51,20 +49,21 @@ def square():
         # Now, lets turn to do another side of the square
         # Tell the user the turtlebot is going to turn 
         print("Let's rotate")
+        # Set the angle the turtlebot should turn to a 90 deg,
+        # which is pi/2
+        relative_angle = .505*PI
+        # Set the speed for the turtlebot to turn at which is .2 rad/s
+        vel_msg.angular.z = abs(speedAng)
         
-       
         # Setting the current time for distance calculus
-        t0 = rospy.Time.now().to_sec()
+        t2 = rospy.Time.now().to_sec()
         current_angle = 0
 
         # Loop to turn the turtlebot the specified angle
         while(current_angle < relative_angle):
-            # Set the speed for the turtlebot to turn at which is .2 rad/s
-            
-            vel_msg.angular.z = abs(speedAng)
             velocity_publisher.publish(vel_msg)
-            t2 = rospy.Time.now().to_sec()
-            current_angle = speedAng*(t2-t0)
+            t3 = rospy.Time.now().to_sec()
+            current_angle = speedAng*(t3-t2)
 
 
         #Forcing our robot to stop
