@@ -68,7 +68,7 @@ def square_openloop(speed, distance, isForward):
 
 if __name__ == '__main__':
     try:
-        square_openloop(0.2,1,True)
+        square_openloop(0.2,2,True)
     except rospy.ROSInterruptException:
         pass
 
