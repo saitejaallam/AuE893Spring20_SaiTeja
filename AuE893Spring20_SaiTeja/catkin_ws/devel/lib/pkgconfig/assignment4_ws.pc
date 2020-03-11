@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/devel
+
+Name: assignment4_ws
+Description: Description of assignment4_ws
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

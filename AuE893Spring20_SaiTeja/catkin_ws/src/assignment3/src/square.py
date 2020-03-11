@@ -1,81 +1,77 @@
 #!/usr/bin/env python
 import rospy
 from geometry_msgs.msg import Twist
-PI = 3.1415926535897
+from math import radians
 
-# Alec Tokosch
-# Assignment  - TurleSim
-# This file contains the python script for the second task which is make the 
-# square_openloop.py file. 
+PI = 3.14
 
-speedX = .2
-speedAng = .2
-distance = 2
 
-def square():
-
-    #Starts a new node
+def square_openloop(speed, distance, isForward):
     rospy.init_node('turtlebot3_gazebo', anonymous=True)
     velocity_publisher = rospy.Publisher('cmd_vel', Twist, queue_size=10)
-    vel_msg = Twist()
 
-    # Tell the user what is going to happen
-    print("Let's make a 2x2 square")
+   
+    for i in range(0,4):
+        # rate = rospy.Rate(10)                   # 10hz
+        vel_msg = Twist()
 
-    # For loop to get all four sides and corners
-    for x in range(4):
+        # Checking if the movement is forward or backwards
+        if (isForward):
+             vel_msg.linear.x = abs(speed)
+        else:
+            vel_msg.linear.x = -abs(speed)
 
-        # Lets go straight and complete the side of the square
-        # Tell the user the turtlebot is going to go straight
-        print("Lets go straight")
-        # Set the linear veloicty to the speedX which is .2
-        vel_msg.linear.x = abs(speedX)
+            # Since we are moving just in x-axis
+            #vel_msg.linear.x = 1
+            vel_msg.linear.y = 0
+            vel_msg.linear.z = 0
+            vel_msg.angular.x = 0
+            vel_msg.angular.y = 0
 
-        #Setting the current time for distance calculus
-        t0 = float(rospy.Time.now().to_sec())
+    # Loop to move the turtle in an specified distance
+        t0 = rospy.Time.now().to_sec()
         current_distance = 0
 
-        # Loop to move the turtlebot the specified distance 
-        while(current_distance < distance):
-            #Publish the velocity
+        while (current_distance < distance):
+       # publish the velocity
             velocity_publisher.publish(vel_msg)
-            #Takes actual time to velocity calculus
-            t1=float(rospy.Time.now().to_sec())
-            #Calculates distancePoseStamped
-            current_distance= speedX*(t1-t0)
-        #After the loop, stops the robot
+       # Takes actual time to velocity calculus
+            t1 = rospy.Time.now().to_sec()
+       # calculates distancePoseStamped
+            current_distance = speed * (t1 - t0)
+
+        # After the loop,stops the robot
         vel_msg.linear.x = 0
-
-        # Now, lets turn to do another side of the square
-        # Tell the user the turtlebot is going to turn 
-        print("Let's rotate")
-        # Set the angle the turtlebot should turn to a 90 deg,
-        # which is pi/2
-        relative_angle = .505*PI
-        # Set the speed for the turtlebot to turn at which is .2 rad/s
-        vel_msg.angular.z = abs(speedAng)
-        
-        # Setting the current time for distance calculus
-        t2 = rospy.Time.now().to_sec()
-        current_angle = 0
-
-        # Loop to turn the turtlebot the specified angle
-        while(current_angle < relative_angle):
-            velocity_publisher.publish(vel_msg)
-            t3 = rospy.Time.now().to_sec()
-            current_angle = speedAng*(t3-t2)
-
-
-        #Forcing our robot to stop
-        vel_msg.angular.z = 0
+        # Force the robot to stop
         velocity_publisher.publish(vel_msg)
 
+        t01 = rospy.Time.now().to_sec()
+        current_angle = 0
+        relative_angle = 90 * 2 * PI / 360
 
+        angular_speed = 90 * 2 * PI / 360
+
+        vel_msg.angular.z = angular_speed
+
+        while (current_angle < relative_angle):
+            velocity_publisher.publish(vel_msg)
+            t11 = rospy.Time.now().to_sec()
+            current_angle = angular_speed * (t11 - t01)
+
+        # Forcing our robot to stop
+        vel_msg.angular.z = 0
+    
+        #rospy.spin()
+
+        
+        velocity_publisher.publish(vel_msg)
 
 if __name__ == '__main__':
     try:
-        # Testing our function
-        square()
-
+        square_openloop(0.2,2,True)
     except rospy.ROSInterruptException:
         pass
+
+
+
+

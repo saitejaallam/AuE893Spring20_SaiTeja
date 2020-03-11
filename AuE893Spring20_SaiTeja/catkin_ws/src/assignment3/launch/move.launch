@@ -21,8 +21,8 @@
 	<node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y 			$(arg y_pos) -z $(arg z_pos) -param robot_description" />
 
 	<!-- Load the python script to run a square or a circle -->
-	<node pkg="assignment3" type="$(arg code).py" name="$(arg code)_Alec" output="screen"/>
+	<node pkg="assignment3" type="$(arg code).py" name="$(arg code)" output="screen"/>
 	
-	<!-- <node pkg="assignment3" type="$(arg code).py" name="$(arg code)_Alec" output="screen"/> -->
+	<!-- <node pkg="assignment3" type="$(arg code).py" name="$(arg code)" output="screen"/> -->
 
 </launch>

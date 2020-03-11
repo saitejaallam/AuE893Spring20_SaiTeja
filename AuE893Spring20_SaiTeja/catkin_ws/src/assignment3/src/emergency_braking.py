@@ -8,7 +8,7 @@ from rospy import Time
 
 def callback(msg):
 	
-    move.linear.x = 0.3
+    move.linear.x = 0.8
 	
     if msg.ranges[0]<=1:
         move.linear.x = 0

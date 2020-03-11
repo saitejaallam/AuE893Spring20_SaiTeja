@@ -1488,6 +1488,24 @@ clean: assignment3/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory assignment4_obstacleavoidance
+
+# Convenience name for "all" pass in the directory.
+assignment4_obstacleavoidance/all:
+
+.PHONY : assignment4_obstacleavoidance/all
+
+# Convenience name for "clean" pass in the directory.
+assignment4_obstacleavoidance/clean:
+
+.PHONY : assignment4_obstacleavoidance/clean
+
+# Convenience name for "preinstall" pass in the directory.
+assignment4_obstacleavoidance/preinstall:
+
+.PHONY : assignment4_obstacleavoidance/preinstall
+
+#=============================================================================
 # Directory level rules for directory turtlebot3/turtlebot3_bringup
 
 # Convenience name for "all" pass in the directory.
@@ -4783,6 +4801,24 @@ turtlebot3/turtlebot3_teleop/clean:
 turtlebot3/turtlebot3_teleop/preinstall:
 
 .PHONY : turtlebot3/turtlebot3_teleop/preinstall
+
+#=============================================================================
+# Directory level rules for directory assignment2_ws/src/turtlesim_cleaner
+
+# Convenience name for "all" pass in the directory.
+assignment2_ws/src/turtlesim_cleaner/all:
+
+.PHONY : assignment2_ws/src/turtlesim_cleaner/all
+
+# Convenience name for "clean" pass in the directory.
+assignment2_ws/src/turtlesim_cleaner/clean:
+
+.PHONY : assignment2_ws/src/turtlesim_cleaner/clean
+
+# Convenience name for "preinstall" pass in the directory.
+assignment2_ws/src/turtlesim_cleaner/preinstall:
+
+.PHONY : assignment2_ws/src/turtlesim_cleaner/preinstall
 
 #=============================================================================
 # Directory level rules for directory turtlebot3/turtlebot3_description
