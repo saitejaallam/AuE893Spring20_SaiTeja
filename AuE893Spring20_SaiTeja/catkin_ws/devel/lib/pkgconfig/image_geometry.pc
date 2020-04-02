@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/devel
+
+Name: image_geometry
+Description: Description of image_geometry
+Version: 1.12.8
+Cflags: -I/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/src/vision_opencv/image_geometry/include
+Libs: -L${prefix}/lib -limage_geometry
+Requires: sensor_msgs
