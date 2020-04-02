@@ -15,19 +15,20 @@ PART 1: LINE FOLLOWING
 For calibration, we did turtlebot bringup and also bringup rpicamera, then we ran the following terminal commands for calibration
 
 $ rosrun image_transport republish compressed in:=raspicam_node/image raw out: raspicam_node/image_raw
+
 $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.0254 image:=/raspicam_node/image_raw camera:=/raspicam_node
 
-6) Once the camera is calibrated we tested the same code on the real world bot by keeping the orange colour line and changing the color detection range in the python script but finally tested on the yellow line and also captured a video. We also captured a video in which the real bot followed a yellow bottle. During this implementation we used the image_transport package and also image_proc package in the image_pipeline stack which are also being pushed along with the assignment files.
+6) Once the camera is calibrated we tested the same code on the real world bot by keeping the orange colour line and changing the color detection range in the python script but finally tested on the yellow line and also captured a video. We also captured a video in which the real bot followed a yellow object. During this implementation we used the image_transport package and also image_proc package in the image_pipeline stack which are also being pushed along with the assignment files.
 
 PART 2: APRILTAG DETECTION(TRACKING)
 
 1) To start with this assignment we cloned the april tag libraries and apriltag_ros package from https://github.com/AprilRobotics/apriltag_ros and https://github.com/AprilRobotics/apriltag
-2) We used catkin_make_isolated to make the packages as suggested from the readme file of the above mentioned github repositories.
+2) We built the package by catkin_make_isolated to make the packages as suggested from the readme file of the above mentioned github repositories.
 3) We chose apriltag from the family of 36h11 with an id 3. The tag details are updated in the apriltag_ros/apriltag_ros/config/tags.yaml along with the size of the tag
 4) This apriltag_ros comes up with a conitnuous_detection.launch which calls up the apriltag_ros_continuous_node.cpp node in the src folder.
 5) To obtain the raw image we used image_transport node and then used image_proc node from the image_pipeline stack. After these terminals we launched the continuous_detection.launch which gives the tag_detections topic.
 6) When the camera started detecting, we wrote a code to move the bot by tracking the tag. We captured a video which are provided here in the following location assignment5_trackingandfollowing/videos.
-7) The launch file for this part includes calling the image_trasnport, image_proc and the tag_follower.py nodes at one place.
+7) The launch file for this part includes calling the image_transport, image_proc and the tag_follower.py nodes at one place.
 
 The command to launch the codes are as follows:
 
@@ -50,16 +51,21 @@ Implemented the line following on the real turtlebot by using the orange lines i
 Calibrated the camera required to implement on the turtlebot.
 
 Ishan
-He worked on Kobuki base implementing the two tasks.
+worked on Kobuki base implementing the two tasks because he doesnot have access to the turtlebot3 burger.
 
 Ajith
 Implemented the line following, april detection codes on turtlebot and helped teja in capturing the videos and resolving the issues in part 2.
 
 Sai Teja
-Sai teja modified the launch file for line following code by including the image_transport node and calling the follow_line_step_hsv_realworld.py node.
+modified the launch file for line following code by including the image_transport node and calling the follow_line_step_hsv_realworld.py node.
 Generated the code for tag_detection and created the launch file for part 2.
 
-The videos for both the parts are provided in assignment5_trackingandfollowing/videos
+The videos for both the parts are provided in assignment5_trackingandfollowing/videos.
+
+
+NOTE:
+
+The github repository contains the apriltag_ros package which has all the relevant packages to run part2. As it was built with catkin_make_isolated it cannot be kept in the assignments catkin_ws which was built with catkin_make. So for easy readability and grading I copied the launch file and scripts in the respective launch and src folders of assignment5_trackingandfollowing package.
 
 
 
