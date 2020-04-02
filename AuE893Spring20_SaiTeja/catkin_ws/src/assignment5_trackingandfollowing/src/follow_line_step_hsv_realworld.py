@@ -50,17 +50,17 @@ class LineFollower(object):
         """
 
 	# Threshold both of the HSV images to get only yellow colors
-        #lower_yellow = np.array([20,100,100])
-        #upper_yellow = np.array([50,255,255])
-        #mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
+        lower_yellow = np.array([20,100,100])
+        upper_yellow = np.array([50,255,255])
+        mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
         #mask2 = cv2.inRange(hsv2, lower_yellow, upper_yellow)
 
 	# Threshold both of the HSV images to get only orange colors
         #lower_orange = np.array([0,50,90])
         #upper_orange = np.array([30,255,255])
-        lower_orange = np.array([0,70,70])
-        upper_orange = np.array([30,255,255])
-        mask = cv2.inRange(hsv, lower_orange, upper_orange)
+        #lower_orange = np.array([0,70,70])
+        #upper_orange = np.array([30,255,255])
+        #mask = cv2.inRange(hsv, lower_orange, upper_orange)
         #mask2 = cv2.inRange(hsv2, lower_orange, upper_orange)
 
         # Calculate centroid of the blob of binary image using ImageMoments for both images
@@ -87,26 +87,12 @@ class LineFollower(object):
         err = cx - width/2
         #err2 = cx2 - width/2
 
-        # Determine if no yellow is seen in the primary mask image, if not, then
-        # check the secondary image.
+        # Determine if no yellow is seen in the primary mask image,turn
         # Else there is yellow and move towards it/follow it.
         allZero = not np.any(mask)
         if allZero == 1:
-				self.twist_object.angular.z = 0
+				self.twist_object.angular.z = 0.05
 				print("all zero, NO big picture, TURN")
-
-            # Determine if no yellow is seen in the secondary mask image, if not,
-            # then do not move linearly and just turn to try an find yellow lines.
-            # Else there is yellow, then move towards it.
-            #allZero2 = not np.any(mask2)
-            #if allZero2 == 1:
-				#self.twist_object.angular.z = 0.2
-                #self.twist_object.linear.x = 0
-                #print("all zero, NO big picture, TURN")
-            #else:
-                #self.twist_object.angular.z = -float(err2) / 100
-                #self.twist_object.linear.x = 0.2
-                #print("all zero, big picture")
 
         else:
 			self.twist_object.linear.x = 0.08

@@ -65,8 +65,7 @@ The videos for both the parts are provided in assignment5_trackingandfollowing/v
 
 NOTE:
 
-The github repository contains the apriltag_ros package which has all the relevant packages to run part2. As it was built with catkin_make_isolated it cannot be kept in the assignments catkin_ws which was built with catkin_make. So for easy readability and grading I copied the launch file and scripts in the respective launch and src folders of assignment5_trackingandfollowing package.
-
+The github repository contains the apriltag_ros package which has all the relevant packages to run part2. As it was built with catkin_make_isolated it cannot be kept in the assignments catkin_ws which was built with catkin_make. So for easy readability and grading I copied the launch file and scripts in the respective launch and src folders of assignment5_trackingandfollowing package. Please clone the apriltag_ws to test on the bot.
 
 
 
