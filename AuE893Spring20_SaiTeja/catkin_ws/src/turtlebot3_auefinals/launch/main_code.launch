@@ -1,4 +1,4 @@
 <launch>
-	<node pkg="turtlebot3_auefinals" name="follow_line_step_hsv_gazebo_leg" type="Final.py" output="screen">
+	<node pkg="turtlebot3_auefinals" name="follow_line_step_hsv_gazebo_leg" type="Final_project.py" output="screen">
 	</node>
 </launch>
