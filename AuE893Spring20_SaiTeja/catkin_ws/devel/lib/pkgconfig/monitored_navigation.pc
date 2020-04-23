@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/devel
+
+Name: monitored_navigation
+Description: Description of monitored_navigation
+Version: 1.0.7
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

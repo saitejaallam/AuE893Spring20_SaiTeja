@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/devel
+
+Name: leg_detector
+Description: Description of leg_detector
+Version: 1.1.2
+Cflags: -I/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/devel/include -I/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/src/People_Detection/people/leg_detector/include
+Libs: -L${prefix}/lib 
+Requires: dynamic_reconfigure geometry_msgs message_filters people_msgs people_tracking_filter roscpp sensor_msgs std_msgs tf visualization_msgs

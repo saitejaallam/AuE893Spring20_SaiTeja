@@ -6,24 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/devel/include/turtlebot3_msgs/SensorState.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-
 /home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include/turtlebot3_fake/turtlebot3_fake.h
 math.h
 -
@@ -54,6 +36,24 @@ turtlebot3_fake.h
 
 /home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/src/turtlebot3_fake.cpp
 turtlebot3_fake/turtlebot3_fake.h
+-
+
+/home/nallam/ws_moveit/devel/include/turtlebot3_msgs/SensorState.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
 -
 
 /opt/ros/kinetic/include/geometry_msgs/Point.h

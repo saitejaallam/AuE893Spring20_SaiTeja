@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/install
+
+Name: detector_msg_to_pose_array
+Description: Description of detector_msg_to_pose_array
+Version: 1.8.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: genpy geometry_msgs roslib rospy rostopic

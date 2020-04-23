@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/devel
+
+Name: bayes_tracking
+Description: Description of bayes_tracking
+Version: 1.4.0
+Cflags: -I/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/src/People_Detection/bayestracking/include
+Libs: -L${prefix}/lib -lbayes_tracking
+Requires: 

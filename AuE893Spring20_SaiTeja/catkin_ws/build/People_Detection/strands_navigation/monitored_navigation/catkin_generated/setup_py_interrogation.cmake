@@ -1,0 +1,6 @@
+set(monitored_navigation_SETUP_PY_VERSION "1.0.7")
+set(monitored_navigation_SETUP_PY_SCRIPTS "")
+set(monitored_navigation_SETUP_PY_PACKAGES "monitored_navigation")
+set(monitored_navigation_SETUP_PY_PACKAGE_DIRS "src/monitored_navigation")
+set(monitored_navigation_SETUP_PY_MODULES "")
+set(monitored_navigation_SETUP_PY_MODULE_DIRS "")

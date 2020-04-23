@@ -1,0 +1,2 @@
+set(bayes_people_tracker_MESSAGE_FILES "/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/src/People_Detection/strands_perception_people/bayes_people_tracker/msg/PeopleTracker.msg")
+set(bayes_people_tracker_SERVICE_FILES "")

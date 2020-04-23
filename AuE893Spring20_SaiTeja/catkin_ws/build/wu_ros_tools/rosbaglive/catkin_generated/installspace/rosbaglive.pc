@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/install
+
+Name: rosbaglive
+Description: Description of rosbaglive
+Version: 0.2.6
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

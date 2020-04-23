@@ -1,0 +1,8 @@
+prefix=/home/nallam/AuE893Spring20_SaiTeja/AuE893Spring20_SaiTeja/catkin_ws/install
+
+Name: marathon_reporter
+Description: Description of marathon_reporter
+Version: 0.2.6
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: mongodb_store nav_msgs rospy std_msgs message_runtime
